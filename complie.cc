@@ -10,7 +10,9 @@
 using namespace std;
 
 complie::complie(/* args */) {
-//    cout<<"make complie"<<endl;
+    real=0.0;
+    imag=0.0;
+    cout<<"make complie"<<endl;
 }
 /**
  * @brief complie::complie带参数构造函数
@@ -21,11 +23,12 @@ complie::complie(/* args */) {
 complie::complie(double r, double i) {
     real=r;
     imag=i;
-//    cout<<"make a complie for have info"<<endl;
+    cout<<"make a complie for have info"<<endl;
 }
 complie::~complie() {
-//    cout <<"delete complie" <<endl;
+    cout <<"delete complie" <<endl;
 }
+
 
 /**
  * @brief 返回对象实部
@@ -80,4 +83,37 @@ complie complie::operator+(const complie &t) const{
 */
 complie complie::operator-(const complie &t) const{
     return  complie(this->real - t.real, this->imag - t.imag);
+}
+
+/** @brief 重载了复数对象的=号
+ * @param 传入第二个对象
+ * @return 传回复数对象存储
+*/
+complie& complie::operator=(const complie &t) {
+    if(this!= &t){   //如地址重合直接返回,取地址,const,引用关键知识点
+    this->real=t.real;
+    this->imag=t.imag;
+    }
+    return *this;
+}
+
+/** @brief 对复数对象的++i符号 进行运算符重载
+ *  @param 无输入参数
+ *  @return 返回对象this指针的引用
+*/
+complie& complie::operator++(){   //前置++
+    real++;
+    imag++;
+    return *this;
+}
+
+/** @brief 对附属对象i++ 符号  进行运算符重载
+ *  @param  (int)用来区分后置,无传入参数
+ *  @return 返回对象指针的引用
+*/
+complie complie::operator++(int){  //后置++
+    complie tmp(*this);
+    real++;
+    imag++;
+    return tmp;
 }

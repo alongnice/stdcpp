@@ -18,6 +18,7 @@ class complie
    complie(/* args */);
    complie(double r, double i);
    ~complie();
+
    double get_real();
    double get_imag();
    void set_real(double r);
@@ -25,4 +26,9 @@ class complie
    void get_all();
    complie operator+(const complie& t) const; 
    complie operator-(const complie& t) const; 
+   complie& operator=(const complie& t) ; 
+
+   complie& operator++();
+   complie operator++(int);
+
 };

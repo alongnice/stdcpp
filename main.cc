@@ -9,13 +9,12 @@
 #include "complie.h"
 using namespace std;
 int main() {
-    complie a(3, 4);
-    complie b(1, 2);
-    complie c;
-    c=a+b;
+    complie a(3, 4),b(1,2);
+    complie c=a++;
     c.get_all();
-    c=c-b;
-    c=c-b;
-    c.get_all();
+    complie d=a;
+    d.get_all();
+
+    //  7-6
     return 0;
 }
