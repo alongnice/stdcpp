@@ -7,12 +7,12 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 #include "complie.h"
-using namespace std;
+//using namespace std;
 
 complie::complie(/* args */) {
     real=0.0;
     imag=0.0;
-    cout<<"make complie"<<endl;
+    //cout<<"make complie"<<endl;
 }
 /**
  * @brief complie::complie带参数构造函数
@@ -23,10 +23,10 @@ complie::complie(/* args */) {
 complie::complie(double r, double i) {
     real=r;
     imag=i;
-    cout<<"make a complie for have info"<<endl;
+    //cout<<"make a complie for have info"<<endl;
 }
 complie::~complie() {
-    cout <<"delete complie" <<endl;
+    //cout <<"delete complie" <<endl;
 }
 
 
@@ -112,8 +112,23 @@ complie& complie::operator++(){   //前置++
  *  @return 返回对象指针的引用
 */
 complie complie::operator++(int){  //后置++
+/*
     complie tmp(*this);
     real++;
     imag++;
     return tmp;
+*/
+return complie(real++,imag++);    
+}
+
+ostream& operator<<(ostream& os,const complie &t){
+    os  <<"real: "<<t.real
+        <<"  imag: " <<t.imag;
+        //<< endl;
+    return os;
+}
+
+istream& operator>>(istream& is,complie &t){
+    is >>t.real >>t.imag;
+    return is;
 }

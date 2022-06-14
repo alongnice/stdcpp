@@ -10,11 +10,14 @@
 using namespace std;
 int main() {
     complie a(3, 4),b(1,2);
-    complie c=a++;
+    complie c=++a;
     c.get_all();
-    complie d=a;
+    complie d=b++;
     d.get_all();
-
+    cout<<d<<endl;
+    complie e;
+    cin>>e;
+    cout<<e;
     //  7-6
     return 0;
 }

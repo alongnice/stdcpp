@@ -8,6 +8,7 @@
  */
 #include <iostream>
 
+using namespace std;
 class complie
 {
  private:
@@ -30,5 +31,7 @@ class complie
 
    complie& operator++();
    complie operator++(int);
-
+ //protected:
+   friend ostream& operator<<(ostream& os,const complie &t);
+   friend istream& operator>>(istream& is,complie &t);
 };
