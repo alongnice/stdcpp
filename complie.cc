@@ -121,6 +121,10 @@ complie complie::operator++(int){  //后置++
 return complie(real++,imag++);    
 }
 
+/** @brief 对输入输出函数进行重载支持对象的直接输出
+ *  @param 无
+ *  @return 返回字节流输出
+ */
 ostream& operator<<(ostream& os,const complie &t){
     os  <<"real: "<<t.real
         <<"  imag: " <<t.imag;
@@ -128,6 +132,10 @@ ostream& operator<<(ostream& os,const complie &t){
     return os;
 }
 
+/** @brief 对输入输出函数进行重载支持对象的直接输入
+ *  @param 无
+ *  @return 返回字节流输入
+ */
 istream& operator>>(istream& is,complie &t){
     is >>t.real >>t.imag;
     return is;

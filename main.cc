@@ -7,12 +7,17 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 #include "complie.h"
+#include <fstream>
 //using namespace std;
 int main() {
     int a;
     int index=0;
+    fstream fout;
+    fout.open("testBuffer.txt",ios::app);
+    if(!fout)
+        cout<<"file can't find"<<endl;
     while(cin>>a){
-        cout<<a<<endl;
+        fout<<a<<endl;
         index++;
         if(index==5)
             break;;
@@ -20,7 +25,8 @@ int main() {
     cin.ignore(1024,'\n');  //清空缓存区脏数据
     char ch;
     cin>>ch;
-    cout<<"last char  "<<ch;
-    //  7-9
+    fout<<"last char  "<<ch;
+    fout.close();
+    //  7-10
     return 0;
 }
