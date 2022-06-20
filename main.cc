@@ -8,25 +8,43 @@
  */
 #include "complie.h"
 #include <fstream>
+
+static const int bufferLen = 2048;
+
 //using namespace std;
-int main() {
-    int a;
-    int index=0;
-    fstream fout;
-    fout.open("testBuffer.txt",ios::app);
-    if(!fout)
-        cout<<"file can't find"<<endl;
-    while(cin>>a){
-        fout<<a<<endl;
-        index++;
-        if(index==5)
-            break;;
+/** @brief 检测文件拷贝是否成功
+ * @param 源文件名称
+ * @param 目标文件名称
+ * @return 返回拷贝状态
+*/
+bool copyfile(const string& src,const string& dst){
+    //打开原本的文件和目标文件
+    ifstream in(src.c_str(),std::ios::in|std::ios::binary);
+    //源文件二进制读的方式打开
+    ofstream out(dst.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
+
+    //目标文件二进制写的方式打开
+    if(!in|!out)
+        return false;
+
+    //判断文件打开是否成功 ,失败返回false
+    char temp[bufferLen];
+    while(!in.eof()){
+        in.read(temp,bufferLen);
+        streamsize count = in.gcount();
+        out.write(temp,count);
     }
-    cin.ignore(1024,'\n');  //清空缓存区脏数据
-    char ch;
-    cin>>ch;
-    fout<<"last char  "<<ch;
-    fout.close();
-    //  7-10
+    //从源文件读取数据,写入目标文件
+    //读取源文件的EOF判断读写结束
+
+    //关闭源文件和目标文件
+    in.close();
+    out.close();
+    return true;
+}
+
+int main() {
+    cout<<copyfile("test_master.mp3","test_new.mp3");
+    //  7-12
     return 0;
 }
