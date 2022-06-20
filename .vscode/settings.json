@@ -30,6 +30,8 @@
   ],
   "workbench.panel.defaultLocation": "bottom",
   "files.associations": {
-    "complex": "cpp"
-  }
+    "complex": "cpp",
+    "ostream": "cpp"
+  },
+  "commentTranslate.targetLanguage": "zh-CN"
 }
